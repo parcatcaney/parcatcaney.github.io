@@ -1093,62 +1093,126 @@
       line-height: 1.75;
     }
 
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 0.86fr;
-      gap: 1rem;
+    .gallery-carousel {
+      position: relative;
     }
 
-    .gallery-card {
-      position: relative;
-      min-width: 0;
+    .gallery-carousel-viewport {
+      height: clamp(22rem, 42vw, 34rem);
       overflow: hidden;
+      background: #dce0d9;
+      touch-action: pan-y;
+    }
+
+    .gallery-carousel-track {
+      display: flex;
+      height: 100%;
+      transition: transform 650ms cubic-bezier(0.2, 0.65, 0.25, 1);
+    }
+
+    .gallery-carousel-slide {
+      display: flex;
+      min-width: 0;
+      height: 100%;
+      margin: 0;
+      flex: 0 0 100%;
+      flex-direction: column;
+    }
+
+    .gallery-carousel-slide img {
+      width: 100%;
+      min-height: 0;
+      height: 100%;
+      flex: 1 1 0;
+      object-fit: contain;
       background: #dce0d9;
     }
 
-    .gallery-card img {
-      height: 100%;
-      min-height: 250px;
-      object-fit: cover;
-      transition: transform 700ms cubic-bezier(0.2, 0.65, 0.25, 1);
-    }
-
-    .gallery-card:hover img {
-      transform: scale(1.035);
-    }
-
-    .gallery-card.large {
-      min-height: 490px;
-    }
-
-    .gallery-card.small {
-      min-height: 490px;
-    }
-
-    .gallery-card.small img {
-      object-position: 54% center;
-    }
-
-    .gallery-card.community img {
-      object-position: center;
-    }
-
     .gallery-label {
-      position: absolute;
-      right: 1rem;
-      bottom: 1rem;
-      left: 1rem;
       display: flex;
-      padding: 0.9rem 1rem;
+      padding: 0.9rem 1.2rem;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      background: rgba(18, 38, 30, 0.8);
+      background: var(--forest);
       color: white;
       font-size: 0.65rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      backdrop-filter: blur(8px);
+    }
+
+    .gallery-carousel-controls {
+      display: flex;
+      margin-top: 1rem;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .gallery-carousel-controls button {
+      display: grid;
+      min-width: 2.75rem;
+      min-height: 2.75rem;
+      padding: 0.5rem;
+      border: 1px solid rgba(24, 53, 43, 0.3);
+      background: transparent;
+      color: var(--forest);
+      cursor: pointer;
+      font: inherit;
+      place-items: center;
+    }
+
+    .gallery-carousel-controls button:hover {
+      background: var(--forest);
+      color: white;
+    }
+
+    .gallery-carousel-controls button:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    .gallery-carousel-dots {
+      display: flex;
+      margin: 0 auto;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .gallery-carousel-controls .gallery-carousel-dot {
+      width: 0.65rem;
+      min-width: 0;
+      min-height: 0;
+      height: 0.65rem;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(24, 53, 43, 0.3);
+      transition: width 180ms ease, background 180ms ease;
+    }
+
+    .gallery-carousel-controls .gallery-carousel-dot[aria-current="true"] {
+      width: 1.8rem;
+      background: var(--forest);
+    }
+
+    .gallery-carousel-controls .gallery-carousel-toggle {
+      min-width: 4.5rem;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .gallery-carousel-status {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      clip-path: inset(50%);
     }
 
     .gallery-label span:last-child {
@@ -1914,16 +1978,8 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .gallery-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .gallery-card.large {
-        min-height: 360px;
-      }
-
-      .gallery-card.small {
-        min-height: 330px;
+      .gallery-carousel-viewport {
+        height: clamp(19rem, 60vw, 26rem);
       }
 
       .entry-strip {
@@ -2001,6 +2057,10 @@
 
       .weekend-card img {
         height: 220px;
+      }
+
+      .gallery-carousel-viewport {
+        height: clamp(18rem, 76vw, 22rem);
       }
 
       .number-item {
@@ -2180,23 +2240,39 @@
             <p>A warm welcome, and a place to put down roots.</p>
           </div>
         </div>
-        <div class="gallery-grid">
-          <figure class="gallery-card large reveal">
-            <img data-photo="neighborhood" alt="Aerial view of custom luxury homes and tree-lined streets at Parc at Caney" loading="lazy">
-            <figcaption class="gallery-label"><span>Custom luxury homes, naturally at home</span><span aria-hidden="true">01</span></figcaption>
-          </figure>
-          <figure class="gallery-card small reveal delay-1">
-            <img data-photo="landscape" alt="Wooded landscape and open green space near the community" loading="lazy">
-            <figcaption class="gallery-label"><span>A quieter pace of life</span><span aria-hidden="true">02</span></figcaption>
-          </figure>
-          <figure class="gallery-card small community reveal">
-            <img data-photo="community-rainbow-homes" alt="Parc at Caney luxury homes beneath evening clouds and a rainbow" loading="lazy">
-            <figcaption class="gallery-label"><span>A rainbow over the neighborhood</span><span aria-hidden="true">03</span></figcaption>
-          </figure>
-          <figure class="gallery-card small community reveal delay-1">
-            <img data-photo="community-rainbow-green" alt="A rainbow over the community's green open space" loading="lazy">
-            <figcaption class="gallery-label"><span>Room to roam, under open skies</span><span aria-hidden="true">04</span></figcaption>
-          </figure>
+        <div class="gallery-carousel reveal" data-gallery-carousel role="region" aria-label="Community photo slideshow">
+          <div class="gallery-carousel-viewport" data-gallery-viewport>
+            <div class="gallery-carousel-track" data-gallery-track>
+              <figure class="gallery-carousel-slide" role="group" aria-roledescription="slide" aria-label="1 of 4: Custom luxury homes, naturally at home">
+                <img data-photo="neighborhood" alt="Aerial view of custom luxury homes and tree-lined streets at Parc at Caney" loading="lazy">
+                <figcaption class="gallery-label"><span>Custom luxury homes, naturally at home</span><span aria-hidden="true">01</span></figcaption>
+              </figure>
+              <figure class="gallery-carousel-slide" role="group" aria-roledescription="slide" aria-label="2 of 4: A quieter pace of life" aria-hidden="true">
+                <img data-photo="landscape" alt="Wooded landscape and open green space near the community" loading="lazy">
+                <figcaption class="gallery-label"><span>A quieter pace of life</span><span aria-hidden="true">02</span></figcaption>
+              </figure>
+              <figure class="gallery-carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 4: A rainbow over the neighborhood" aria-hidden="true">
+                <img data-photo="community-rainbow-homes" alt="Parc at Caney luxury homes beneath evening clouds and a rainbow" loading="lazy">
+                <figcaption class="gallery-label"><span>A rainbow over the neighborhood</span><span aria-hidden="true">03</span></figcaption>
+              </figure>
+              <figure class="gallery-carousel-slide" role="group" aria-roledescription="slide" aria-label="4 of 4: Room to roam, under open skies" aria-hidden="true">
+                <img data-photo="community-rainbow-green" alt="A rainbow over the community's green open space" loading="lazy">
+                <figcaption class="gallery-label"><span>Room to roam, under open skies</span><span aria-hidden="true">04</span></figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="gallery-carousel-controls" role="group" aria-label="Photo slideshow controls">
+            <button type="button" data-gallery-previous aria-label="Previous photo">←</button>
+            <div class="gallery-carousel-dots" role="group" aria-label="Choose a photo">
+              <button class="gallery-carousel-dot" type="button" data-gallery-slide="0" aria-label="Show photo 1 of 4" aria-current="true"></button>
+              <button class="gallery-carousel-dot" type="button" data-gallery-slide="1" aria-label="Show photo 2 of 4" aria-current="false"></button>
+              <button class="gallery-carousel-dot" type="button" data-gallery-slide="2" aria-label="Show photo 3 of 4" aria-current="false"></button>
+              <button class="gallery-carousel-dot" type="button" data-gallery-slide="3" aria-label="Show photo 4 of 4" aria-current="false"></button>
+            </div>
+            <button type="button" data-gallery-next aria-label="Next photo">→</button>
+            <button class="gallery-carousel-toggle" type="button" data-gallery-toggle aria-label="Pause slideshow">Pause</button>
+          </div>
+          <p class="gallery-carousel-status" data-gallery-status aria-live="polite" aria-atomic="true">Photo 1 of 4: Custom luxury homes, naturally at home</p>
         </div>
       </div>
     </section>
@@ -2462,10 +2538,10 @@
             <div class="owner-login">
               <h3>Owner sign in</h3>
               <form id="owner-login-form">
-                <label for="owner-id">User ID — last name
+                <label for="owner-id">User ID
                   <input id="owner-id" name="userId" type="text" placeholder="Enter your last name" autocomplete="off" required>
                 </label>
-                <label for="owner-pin">PIN — from the HOA
+                <label for="owner-pin">PIN
                   <input id="owner-pin" name="pin" type="password" inputmode="numeric" placeholder="Enter HOA PIN" autocomplete="off" required>
                 </label>
                 <p class="login-error" id="owner-login-error" role="alert" hidden>Enter a valid PIN.</p>
@@ -2657,6 +2733,117 @@
         playUiSound();
       }
     });
+
+    const galleryCarousel = document.querySelector("[data-gallery-carousel]");
+    const galleryViewport = galleryCarousel.querySelector("[data-gallery-viewport]");
+    const galleryTrack = galleryCarousel.querySelector("[data-gallery-track]");
+    const gallerySlides = [...galleryTrack.querySelectorAll(".gallery-carousel-slide")];
+    const galleryDots = [...galleryCarousel.querySelectorAll("[data-gallery-slide]")];
+    const galleryToggle = galleryCarousel.querySelector("[data-gallery-toggle]");
+    const galleryStatus = galleryCarousel.querySelector("[data-gallery-status]");
+    const galleryReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let activeGallerySlide = 0;
+    let galleryTimer;
+    let galleryVisible = !("IntersectionObserver" in window);
+    let galleryHovered = false;
+    let galleryFocused = false;
+    let galleryPaused = galleryReducedMotion;
+    let touchStart;
+
+    function updateGalleryPlayback() {
+      window.clearInterval(galleryTimer);
+      galleryToggle.textContent = galleryPaused ? "Play" : "Pause";
+      galleryToggle.setAttribute("aria-label", `${galleryPaused ? "Play" : "Pause"} slideshow`);
+
+      if (!galleryPaused && !galleryHovered && !galleryFocused && galleryVisible && !document.hidden) {
+        galleryTimer = window.setInterval(() => showGallerySlide(activeGallerySlide + 1), 5000);
+      }
+    }
+
+    function showGallerySlide(index, userInitiated = false) {
+      activeGallerySlide = (index + gallerySlides.length) % gallerySlides.length;
+      galleryTrack.style.transform = `translateX(-${activeGallerySlide * 100}%)`;
+      gallerySlides.forEach((slide, slideIndex) => {
+        slide.setAttribute("aria-hidden", String(slideIndex !== activeGallerySlide));
+      });
+      galleryDots.forEach((dot, dotIndex) => {
+        dot.setAttribute("aria-current", String(dotIndex === activeGallerySlide));
+      });
+
+      if (userInitiated) {
+        galleryPaused = true;
+        const caption = gallerySlides[activeGallerySlide].querySelector(".gallery-label span").textContent.trim();
+        galleryStatus.textContent = `Photo ${activeGallerySlide + 1} of ${gallerySlides.length}: ${caption}`;
+      }
+      updateGalleryPlayback();
+    }
+
+    galleryCarousel.querySelector("[data-gallery-previous]").addEventListener("click", () => {
+      showGallerySlide(activeGallerySlide - 1, true);
+    });
+    galleryCarousel.querySelector("[data-gallery-next]").addEventListener("click", () => {
+      showGallerySlide(activeGallerySlide + 1, true);
+    });
+    galleryDots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        showGallerySlide(Number(dot.dataset.gallerySlide), true);
+      });
+    });
+    galleryToggle.addEventListener("click", () => {
+      galleryPaused = !galleryPaused;
+      if (!galleryPaused) {
+        galleryHovered = false;
+        galleryFocused = false;
+      }
+      updateGalleryPlayback();
+    });
+    galleryCarousel.addEventListener("pointerenter", () => {
+      galleryHovered = true;
+      updateGalleryPlayback();
+    });
+    galleryCarousel.addEventListener("pointerleave", () => {
+      galleryHovered = false;
+      updateGalleryPlayback();
+    });
+    galleryCarousel.addEventListener("focusin", () => {
+      galleryFocused = true;
+      updateGalleryPlayback();
+    });
+    galleryCarousel.addEventListener("focusout", (event) => {
+      if (!galleryCarousel.contains(event.relatedTarget)) {
+        galleryFocused = false;
+        updateGalleryPlayback();
+      }
+    });
+    galleryViewport.addEventListener("touchstart", (event) => {
+      const touch = event.changedTouches[0];
+      touchStart = { x: touch.clientX, y: touch.clientY };
+    }, { passive: true });
+    galleryViewport.addEventListener("touchend", (event) => {
+      if (!touchStart) {
+        return;
+      }
+      const touch = event.changedTouches[0];
+      const deltaX = touch.clientX - touchStart.x;
+      const deltaY = touch.clientY - touchStart.y;
+      touchStart = undefined;
+      if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY)) {
+        showGallerySlide(activeGallerySlide + (deltaX < 0 ? 1 : -1), true);
+      }
+    }, { passive: true });
+    galleryViewport.addEventListener("touchcancel", () => {
+      touchStart = undefined;
+    }, { passive: true });
+    document.addEventListener("visibilitychange", updateGalleryPlayback);
+
+    if ("IntersectionObserver" in window) {
+      const galleryObserver = new IntersectionObserver(([entry]) => {
+        galleryVisible = entry.isIntersecting;
+        updateGalleryPlayback();
+      }, { threshold: 0.2 });
+      galleryObserver.observe(galleryCarousel);
+    }
+    showGallerySlide(0);
 
     const locationTrack = document.querySelector("#location-track");
     const locationSlides = [...locationTrack.querySelectorAll(".location-slide")];
