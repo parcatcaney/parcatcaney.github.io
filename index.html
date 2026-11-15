@@ -128,16 +128,16 @@
       background:
         linear-gradient(90deg, rgba(12, 31, 25, 0.64) 0%, rgba(12, 31, 25, 0.34) 57%, rgba(12, 31, 25, 0.24) 100%),
         linear-gradient(0deg, rgba(14, 34, 27, 0.72) 0%, transparent 42%, rgba(12, 25, 21, 0.35) 100%),
-        var(--photo-landscape) 28% center / cover no-repeat;
+        url("assets/hero-neighborhood-street.jpg") 28% center / cover no-repeat;
       opacity: var(--hero-forest-opacity, 0);
       transform: scale(1.02);
     }
 
     .hero-aerial {
       background:
-        linear-gradient(90deg, rgba(12, 31, 25, 0.64) 0%, rgba(12, 31, 25, 0.34) 57%, rgba(12, 31, 25, 0.24) 100%),
-        linear-gradient(0deg, rgba(14, 34, 27, 0.72) 0%, transparent 42%, rgba(12, 25, 21, 0.35) 100%),
-        var(--photo-neighborhood) center 48% / cover no-repeat;
+        linear-gradient(90deg, rgba(12, 31, 25, 0.42) 0%, rgba(12, 31, 25, 0.22) 57%, rgba(12, 31, 25, 0.18) 100%),
+        linear-gradient(0deg, rgba(14, 34, 27, 0.62) 0%, transparent 42%, rgba(12, 25, 21, 0.14) 100%),
+        url("assets/hero-neighborhood-sunset.jpg") 10% 64px / cover no-repeat;
       opacity: var(--hero-aerial-opacity, 1);
       transform: scale(1);
     }
@@ -2199,14 +2199,14 @@
         background:
           linear-gradient(90deg, rgba(12, 31, 25, 0.62), rgba(12, 31, 25, 0.35)),
           linear-gradient(0deg, rgba(14, 34, 27, 0.72) 0%, transparent 54%, rgba(12, 25, 21, 0.35) 100%),
-          var(--photo-landscape) 34% center / cover no-repeat;
+          url("assets/hero-neighborhood-street.jpg") 34% center / cover no-repeat;
       }
 
       .hero-aerial {
         background:
-          linear-gradient(90deg, rgba(12, 31, 25, 0.62), rgba(12, 31, 25, 0.35)),
-          linear-gradient(0deg, rgba(14, 34, 27, 0.72) 0%, transparent 54%, rgba(12, 25, 21, 0.35) 100%),
-          var(--photo-neighborhood) 53% center / cover no-repeat;
+          linear-gradient(90deg, rgba(12, 31, 25, 0.42), rgba(12, 31, 25, 0.22)),
+          linear-gradient(0deg, rgba(14, 34, 27, 0.62) 0%, transparent 54%, rgba(12, 25, 21, 0.14) 100%),
+          url("assets/hero-neighborhood-sunset.jpg") 4% 64px / cover no-repeat;
       }
 
       .numbers::before {
@@ -2682,25 +2682,31 @@
         <div class="gallery-carousel reveal" data-gallery-carousel role="region" aria-roledescription="carousel" aria-label="Community photo slideshow">
           <div class="gallery-carousel-viewport" data-gallery-viewport>
             <div class="gallery-carousel-track" data-gallery-track>
-              <figure class="gallery-carousel-slide" role="group" aria-roledescription="slide" aria-label="1 of 4: Custom luxury homes, naturally at home">
-                <button class="gallery-photo-open" type="button" data-gallery-photo aria-label="Enlarge aerial view of custom luxury homes and tree-lined streets at Parc at Caney">
-                  <img data-photo="neighborhood" alt="Aerial view of custom luxury homes and tree-lined streets at Parc at Caney" loading="lazy">
+              <figure class="gallery-carousel-slide" role="group" aria-roledescription="slide" aria-label="1 of 5: Golden hour over the neighborhood">
+                <button class="gallery-photo-open" type="button" data-gallery-photo aria-label="Enlarge a sunset aerial view of luxury homes bordered by trees" tabindex="-1">
+                  <img src="assets/hero-neighborhood-sunset.jpg" alt="Sunset over an aerial view of luxury homes bordered by trees" loading="lazy">
                 </button>
-                <figcaption class="gallery-label">Custom luxury homes, naturally at home</figcaption>
+                <figcaption class="gallery-label">Golden hour over the neighborhood</figcaption>
               </figure>
-              <figure class="gallery-carousel-slide" role="group" aria-roledescription="slide" aria-label="2 of 4: A quieter pace of life" aria-hidden="true">
+              <figure class="gallery-carousel-slide" role="group" aria-roledescription="slide" aria-label="2 of 5: Tree-lined streets and custom luxury homes" aria-hidden="true">
+                <button class="gallery-photo-open" type="button" data-gallery-photo aria-label="Enlarge a tree-lined street through a neighborhood of custom luxury homes" tabindex="-1">
+                  <img src="assets/hero-neighborhood-street.jpg" alt="A tree-lined street between custom luxury homes" loading="lazy">
+                </button>
+                <figcaption class="gallery-label">Tree-lined streets and custom luxury homes</figcaption>
+              </figure>
+              <figure class="gallery-carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 5: A quieter pace of life" aria-hidden="true">
                 <button class="gallery-photo-open" type="button" data-gallery-photo aria-label="Enlarge wooded landscape and open green space near the community" tabindex="-1">
                   <img data-photo="landscape" alt="Wooded landscape and open green space near the community" loading="lazy">
                 </button>
                 <figcaption class="gallery-label">A quieter pace of life</figcaption>
               </figure>
-              <figure class="gallery-carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 4: A rainbow over the neighborhood" aria-hidden="true">
+              <figure class="gallery-carousel-slide" role="group" aria-roledescription="slide" aria-label="4 of 5: A rainbow over the neighborhood" aria-hidden="true">
                 <button class="gallery-photo-open" type="button" data-gallery-photo aria-label="Enlarge Parc at Caney luxury homes beneath evening clouds and a rainbow" tabindex="-1">
                   <img data-photo="community-rainbow-homes" alt="Parc at Caney luxury homes beneath evening clouds and a rainbow" loading="lazy">
                 </button>
                 <figcaption class="gallery-label">A rainbow over the neighborhood</figcaption>
               </figure>
-              <figure class="gallery-carousel-slide" role="group" aria-roledescription="slide" aria-label="4 of 4: Room to roam, under open skies" aria-hidden="true">
+              <figure class="gallery-carousel-slide" role="group" aria-roledescription="slide" aria-label="5 of 5: Room to roam, under open skies" aria-hidden="true">
                 <button class="gallery-photo-open" type="button" data-gallery-photo aria-label="Enlarge a rainbow over the community's green open space" tabindex="-1">
                   <img data-photo="community-rainbow-green" alt="A rainbow over the community's green open space" loading="lazy">
                 </button>
